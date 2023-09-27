@@ -1,0 +1,28 @@
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && createOnomatopia()">
+  <label for="onomatopia">Write a new onomatopia</label>
+  <input
+    type="text"
+    id="onomatopia"
+    #onoma="ngModel"
+    [(ngModel)]="newOnomatopia"
+    name="newOnomatopia"
+    minlength="2"
+    maxlength="12"
+    required
+  />
+  <button type="submit">Send</button>
+  <div>
+    <small *ngIf="myForm.submitted && onoma.errors?.['required']" style="color: red"
+      >The field is empty</small
+    >
+    <small *ngIf="myForm.submitted && onoma.errors?.['minlength']" style="color: red"
+      >minimum 2 characters</small
+    >
+  </div>
+</form>
+
+<img
+  src="https://thinkwritten.com/wp-content/uploads/2019/09/onomatopoeia-word-examples-1024x677.jpg"
+  alt=""
+  style="width: 600px"
+/>
